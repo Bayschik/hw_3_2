@@ -8,9 +8,13 @@ public class Main {
                 System.out.println("Снято 6000 сом. Остаток: " + bankAccount.getAmount());
             }
         }catch (LimitException e){
-            System.out.println("Исключение: " + e.getMessage());
-            System.out.println("Снято только: " + e.getRemainingAmount());
+            try {
+                bankAccount.withDraw((int) e.getRemainingAmount());
+            }catch (LimitException ex){
+                System.out.println(ex.getMessage());
+            }
         }
+        System.out.println(bankAccount.getAmount());
     }
 }
 

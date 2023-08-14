@@ -11,6 +11,7 @@ public class BankAccount {
 
     public void withDraw(int sum) throws LimitException{
         if(sum>amount){
+
             throw new LimitException("Недостаточно средств для снятия денег ",getAmount());
         }
         amount-=sum;
